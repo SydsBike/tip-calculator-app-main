@@ -256,6 +256,11 @@ body {
   column-gap: 17px;
 }
 
+.custom {
+  background-color: var(--clr-bg-app);
+  color: var(--clr-bg-btn);
+}
+
 .tip-select {
   flex: 1 1 117px;
 }
