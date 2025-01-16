@@ -1,0 +1,326 @@
+/* Import Font */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* Custom Properties */
+:root {
+  /* Typography */
+
+  --ff-primary: "Space Mono", serif;
+  --fs-sub-title: 0.8125rem;
+  --fs-section-title: 1rem;
+  --fs-pimary: 1.5rem;
+  --fs-display: 2rem;
+  --fw-primary: 700;
+
+  /* Custom Colors */
+
+  --clr-bg-primary: hsl(185, 41%, 84%);
+  --clr-bg-app: hsl(0, 0%, 100%);
+  --clr-bg-btn: hsl(183, 100%, 15%);
+  --clr-bg-btn-reset: hsl(183, 78%, 24%);
+  --clr-bg-hover: hsl(173, 61%, 77%);
+  --clr-bg-input: hsl(185, 38%, 97%);
+  --clr-invalid: hsl(13, 70%, 60%);
+
+  --clr-f-primary: hsl(183, 100%, 15%);
+  --clr-f-sub: hsl(183, 15%, 56%);
+  --clr-f-display: hsl(172, 67%, 45%);
+  --clr-f-section-title: hsl(186, 14%, 43%);
+  --clr-f-btn-custom: hsl(180, 18%, 40%);
+  --clr-f-input-opaque: hsla(183, 100%, 15%, 0.35);
+}
+
+/* CSS Resets */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+html,
+body {
+  height: 100%;
+  line-height: 1.1;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Utility Classes */
+
+.inputs {
+  color: var(--clr-bg-btn);
+  background-color: var(--clr-bg-input);
+  border: none;
+  text-align: right;
+  outline: none;
+  padding-right: 17px;
+}
+
+.btn {
+  color: var(--clr-bg-app);
+  background-color: var(--clr-bg-btn);
+  border-radius: 0.3125rem;
+  border: none;
+  padding-block: 6px;
+}
+
+.btn-reset {
+  background-color: var(--clr-bg-btn-reset);
+  font-size: 20px;
+  border-radius: 0.3125rem;
+  padding-block: 9px;
+  opacity: 35%;
+  border: none;
+}
+
+.section-title {
+  font-size: var(--fs-section-title);
+  color: var(--clr-f-section-title);
+}
+
+.bg-display {
+  background-color: var(--clr-bg-btn);
+}
+
+.h3 {
+  font-size: var(--fs-section-title);
+}
+
+.span {
+  font-size: var(--fs-section-title);
+  color: var(--clr-bg-app);
+}
+.sub-title {
+  font-size: var(--fs-sub-title);
+  color: var(--clr-f-sub);
+}
+
+.f-display {
+  color: var(--clr-f-display);
+  font-size: var(--fs-display);
+}
+
+/* pseudo classes */
+
+.inputs::placeholder {
+  color: var(--clr-f-input-opaque);
+}
+
+.inputs:hover {
+  border-color: var(--clr-f-display);
+  cursor: pointer;
+}
+.inputs:focus,
+.inputs:focus-visible {
+  border: 2px solid var(--clr-f-display);
+}
+
+.inputs:invalid {
+  border: 2px solid var(--clr-invalid);
+}
+
+.btn:hover,
+.btn:focus-visible,
+.btn-reset:hover,
+.btn-reset:focus-visible {
+  color: var(--clr-bg-btn);
+  background-color: var(--clr-bg-hover);
+  border: none;
+  cursor: pointer;
+}
+
+/* General Styling */
+
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-pimary);
+  font-weight: var(--fw-primary);
+  color: var(--clr-f-primary);
+  background-color: var(--clr-bg-primary);
+}
+
+.logo {
+  margin-inline: auto;
+  margin-block: clamp(3.125rem, 0.6382rem + 10.6103vw, 10.1875rem) clamp(2.5538rem, 1.5194rem + 4.4131vw, 5.4913rem);
+}
+
+.calculator {
+  background-color: var(--clr-bg-app);
+  border-radius: 1.5625rem;
+  max-width: 920px;
+  min-width: 375px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.input {
+  padding: clamp(2rem, 1.7139rem + 1.2207vw, 2.8125rem);
+  display: grid;
+  gap: clamp(2rem, 1.8239rem + 0.7512vw, 2.5rem);
+}
+
+.bill {
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+
+.bill-input {
+  background-image: url("./images/icon-dollar.svg");
+  background-repeat: no-repeat;
+  background-position: 19.26px center;
+}
+
+.select-tip {
+  display: grid;
+  gap: 6px;
+}
+
+.tip-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  column-gap: 17px;
+}
+
+.tip-select {
+  flex: 1 1 117px;
+}
+
+.number-of-people {
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+.number-of-people-input {
+  background-image: url("./images/icon-person.svg");
+  background-repeat: no-repeat;
+  background-position: 17px center;
+}
+
+.results-display {
+  display: grid;
+  gap: clamp(2rem, 0.0194rem + 8.4507vw, 7.625rem);
+  padding-inline: clamp(1.5rem, 1.1479rem + 1.5023vw, 2.5rem);
+  padding-block: clamp(2.3125rem, 2.2465rem + 0.2817vw, 2.5rem) clamp(1.5rem, 1.1479rem + 1.5023vw, 2.5rem);
+  
+  margin-inline: 1.5rem;
+  border-radius: 15px;
+
+}
+
+.results-display-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  align-items: center;
+  gap: clamp(1.25rem, 0.7879rem + 1.9718vw, 2.5625rem);
+}
+
+.group-2 {
+  text-align: right;
+}
+
+.error-1,
+.error-2 {
+  font-size: 1rem;
+  color: #e17457;
+  position: absolute;
+  right: 0px;
+  display: none;
+}
+
+.inputs:invalid + .error-1,
+.inputs:invalid + .error-2 {
+  display: block;
+}
+@media (min-width: 50em) {
+  .calculator {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding-bottom: 0;
+    box-shadow: 0 32px 43px  hsla(185, 38%, 50%, 20.07%);
+  }
+  .input {
+    padding-right: 0;
+  }
+
+  .results-display {
+    margin-left: 0;
+    margin-block: 2rem;
+  }
+}
