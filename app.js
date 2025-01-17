@@ -68,21 +68,20 @@ class Tip {
   }
 
   calculate() {
-
     const bill = this._totalBill;
     const tipP = this._tipPercentage;
     const people = this._numOfPeople;
 
     const tip = (bill * tipP) / 100;
     const tipBill = tip + this._totalBill;
-    this._totalPerPerson = tipBill / people
-    this._tipPerPerson = tip / people
+    this._totalPerPerson = tipBill / people;
+    this._tipPerPerson = tip / people;
 
-    this.updateDisplay()
-
+    this.updateDisplay();
   }
 
   updateDisplay() {
+    if (isNaN(this._tipPerPerson) || !isFinite(this._tipPerPerson)) return;
     this.tipDisplay.innerText = formatCurrency(this._tipPerPerson);
     this.totalDisplay.innerText = formatCurrency(this._totalPerPerson);
   }
@@ -113,7 +112,7 @@ function onChangeCustom({ target }) {
 function onClickTip({ target }) {
   const total = +target.innerText.slice(0, -1);
   app.tipPercentage = total;
-  app.calculate()
+  app.calculate();
 }
 
 billInput.addEventListener("input", onChangeBill);
