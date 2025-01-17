@@ -22,8 +22,7 @@
         <section class="input">
           <form action="" class="bill">
             <label for="bill" class="section-title bill-title">Bill</label>
-
-            <input id="bill" type="number" placeholder="0" min="1" class="bill-input inputs" />
+            <input id="bill" type="number" placeholder="0" step="0.01" min="1" class="bill-input inputs" />
             <span class="error-1">Can't be Zero</span>
           </form>
           <section class="select-tip">
@@ -34,12 +33,12 @@
               <button class="tip-select btn">15%</button>
               <button class="tip-select btn">25%</button>
               <button class="tip-select btn">50%</button>
-              <button class="tip-select btn custom">Custom</button>
+              <input id="custom" placeholder="Custom" class="custom tip-select" type="number" step=".01"/>
             </div>
           </section>
           <form action="" class="number-of-people">
-            <label for="split" class="section-title">Number of People</label>
-            <input id="split" type="number" min="1" placeholder="0" class="number-of-people-input inputs" />
+            <label for="people" class="section-title">Number of People</label>
+            <input id="people" type="number" min="1" placeholder="0" class="number-of-people-input inputs" />
             <span class="error-2">Can't be Zero</span>
           </form>
         </section>
@@ -51,7 +50,7 @@
               <p class="sub-title">/ person</p>
             </div>
             <div class="group-2">
-              <span class="display-tip f-display">$4.27</span>
+              <span id="tip-display" class="display-tip f-display">$4.27</span>
             </div>
 
             <div class="group-1">
@@ -59,7 +58,7 @@
               <p class="sub-title">/ person</p>
             </div>
             <div class="group-2">
-              <span class="total-amount f-display">$32.79</span>
+              <span id="total-display" class="total-amount f-display">$32.79</span>
             </div>
           </div>
           <button class="reset btn-reset">RESET</button>
