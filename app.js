@@ -18,7 +18,6 @@ const formatCurrency = (amount) => {
 
 class Tip {
   constructor(tipDisplayElement, totalDispolayElement) {
-    this.billInput = billInput;
     this.tipDisplay = tipDisplayElement;
     this.totalDisplay = totalDispolayElement;
     this._totalBill = 0;
@@ -36,37 +35,51 @@ class Tip {
     this._tipPerPerson = 0;
     this._totalPerPerson = 0;
     billInput.value = "";
+    customInput.value = "";
     numberOfPeopleInput.value = "";
     this.updateDisplay();
   }
 
   set totalBill(amount) {
     // Check if the amount is a valid positive number
-    typeof amount === "number" && amount > 0 ? (this._totalBill = amount) : (this._totalBill = "");
+    if (typeof amount !== "number" || amount <= 0) {
+      return;
+    }
+    this._totalBill = amount;
+    console.log(this._totalBill);
   }
 
   set numOfPeople(num) {
-    typeof num === "number" && num > 0 ? (this._numOfPeople = num) : new Error("Must be number greater than 0");
+    // Check if the amount is a valid positive number
+    if (!Number.isInteger(num) || num <= 0) {
+      return;
+    }
+    this._numOfPeople = num;
     console.log(this._numOfPeople);
   }
 
   set tipPercentage(tip) {
-    typeof tip === "number" && tip > 0 ? (this._tipPercentage = tip) : (this._tipPercentage = 0);
+    // Check if the amount is a valid positive number
+    if (typeof tip !== "number" || tip < 0) {
+      return;
+    }
+    this._tipPercentage = tip;
     console.log(this._tipPercentage);
   }
 
   calculate() {
-    if (this._totalBill && this._numOfPeople && this._tipPercentage) {
-      const tip = (this._totalBill * this._tipPercentage) / 100;
 
-      console.log(tip);
+    const bill = this._totalBill;
+    const tipP = this._tipPercentage;
+    const people = this._numOfPeople;
 
-      this._tipPerPerson = tip / this._numOfPeople;
+    const tip = (bill * tipP) / 100;
+    const tipBill = tip + this._totalBill;
+    this._totalPerPerson = tipBill / people
+    this._tipPerPerson = tip / people
 
-      this._totalPerPerson = this._totalBill / this._numOfPeople;
-      this.updateDisplay();
-    }
-    return;
+    this.updateDisplay()
+
   }
 
   updateDisplay() {
@@ -76,30 +89,31 @@ class Tip {
 }
 const app = new Tip(tipDisplayElement, totalDispolayElement);
 
-function onChangeBill(e) {
-  const amount = +e.target.value;
-  app.totalBill = amount;
-  app.calculate();
-}
-
-function onChangePeople(e) {
-  const people = +e.target.value;
-  app.numOfPeople = people;
-  app.calculate();
-}
-
-function onChangeCustom(e) {
-  const tipPercent = +e.target.value;
-  app.tipPercentage = tipPercent;
-}
-
-function onClickTip(e) {
-  const tipPercent = +e.target.innerHTML.slice(0, -1);
-  app.tipPercentage = tipPercent;
-}
-
 function onReset() {
   app.reset();
+}
+
+function onChangeBill({ target }) {
+  const total = +target.value;
+  app.totalBill = total;
+  app.calculate();
+}
+function onChangePeople({ target }) {
+  const total = +target.value;
+  app.numOfPeople = total;
+  app.calculate();
+}
+
+function onChangeCustom({ target }) {
+  const total = +target.value;
+  app.tipPercentage = total;
+  app.calculate();
+}
+
+function onClickTip({ target }) {
+  const total = +target.innerText.slice(0, -1);
+  app.tipPercentage = total;
+  app.calculate()
 }
 
 billInput.addEventListener("input", onChangeBill);
